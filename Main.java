@@ -3,76 +3,61 @@ import java.util.Queue;
 import java.util.Scanner;
 
 class Main{
-    static final String [] action  = {"1-New Mem","2-Gift","3-Check Bal","4-Trans Bal"};
+    static Queue<Integer> q = new LinkedList<Integer>();
+    static Scanner sc = new Scanner(System.in);
+
+    static void promptMsg(){
+        int serviceCode = -1;
+        
+            while(serviceCode!=0){
+            System.out.print("Action [1-New Mem, 2-Gift, 3-Check Bal, 4-Trans Bal]");
+            serviceCode = Integer.parseInt(sc.nextLine());
+            if (serviceCode>4)
+                throw new ArrayIndexOutOfBoundsException();
+            
+            switch (serviceCode){
+                case 1:
+                    for (int i=0;i<4;i++){
+                        q.add(serviceCode);
+                    }                    
+                break;
+                case 2:
+                for(int i=0;i<2;i++){
+                    q.add(serviceCode);
+                }
+                break;
+                case 3:
+                    q.add(serviceCode);                   
+                break;
+                case 4:
+                for(int i=0;i<3;i++){
+                    q.add(serviceCode);
+                }
+                break;
+            }                   
+        }
+    }
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         System.out.print("Input simulation time (mins):");
         int minutes = Integer.parseInt(sc.nextLine());
-        Queue<String> q = new LinkedList<String>();
-        
-        for(int i=0;i<4;i++){
-        printMsg();
-        int choice = Integer.parseInt(sc.nextLine());
-        
-        if (choice !=0)
-            q.add(action[choice-1]);
-
+        System.out.println("---------------- START OF SIMULATION -----------------");
+    
+        for (int i=1;i<minutes+1;i++){
+            promptMsg();
+            System.out.print("After "+i+" min(s)");
+            q.poll();
+            System.out.print(" "+q+"\n");
+            System.out.println("------------------------------------------------------");
         }
+        
 
 
-        q.poll();
-        while(!q.isEmpty()){
-            switch(q.peek()){
-                        case "1-New Mem":
-                        try {
-                            Thread.sleep(40000);
-                            q.poll();
-                        }catch(InterruptedException ex) {
-                        
-                        }
-                        break;
-                        case "2-Gift":
-                                    try {
-                            Thread.sleep(20000);
-                            q.poll();
-                        } catch(InterruptedException ex) {
-                        
-                        }
-                        break;
-                        case "3-Check Bal":
-                                    try {
-                            Thread.sleep(10000);
-                            q.poll();
-                        } catch(InterruptedException ex) {
-                        
-                        }
-                        break;
-                        case "4-Trans Bal":
-                                    try {
-                            Thread.sleep(30000);
-                            q.poll();
-                        } catch(InterruptedException ex) {
-                        
-                        }
-                        break;
-                    }
-        };
 
 
         
-        System.out.println("finished");
-        };
-
-
-    static void printMsg(){
-        System.out.print("Action [");
-        for (int i=0;i<action.length;i++){
-            if(i!=action.length-1)
-                System.out.print(action[i]+", ");
-            else
-                System.out.print(action[i]);
-        }
-        System.out.print("]");
+        
+        
     }
+    
 
-    }
+}
