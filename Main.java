@@ -14,42 +14,47 @@ class Main{
         
         if (choice !=0)
             q.add(action[choice-1]);
-        
-        switch(q.peek()){
-            case "1-New Mem":
-            try {
-                Thread.sleep(40000);
-                q.poll();
-            } catch(InterruptedException ex) {
-            
-            }
-            break;
-            case "2-Gift":
-                        try {
-                Thread.sleep(20000);
-                q.poll();
-            } catch(InterruptedException ex) {
-            
-            }
-            break;
-            case "3-Check Bal":
-                        try {
-                Thread.sleep(10000);
-                q.poll();
-            } catch(InterruptedException ex) {
-            
-            }
-            break;
-            case "4-Trans Bal":
-                        try {
-                Thread.sleep(30000);
-                q.poll();
-            } catch(InterruptedException ex) {
-            
-            }
-            break;
 
-        }
+        q.poll();
+        while(!q.isEmpty()){
+            switch(q.peek()){
+                        case "1-New Mem":
+                        try {
+                            Thread.sleep(40000);
+                            q.poll();
+                        }catch(InterruptedException ex) {
+                        
+                        }
+                        break;
+                        case "2-Gift":
+                                    try {
+                            Thread.sleep(20000);
+                            q.poll();
+                        } catch(InterruptedException ex) {
+                        
+                        }
+                        break;
+                        case "3-Check Bal":
+                                    try {
+                            Thread.sleep(10000);
+                            q.poll();
+                        } catch(InterruptedException ex) {
+                        
+                        }
+                        break;
+                        case "4-Trans Bal":
+                                    try {
+                            Thread.sleep(30000);
+                            q.poll();
+                        } catch(InterruptedException ex) {
+                        
+                        }
+                        break;
+                    }
+        };
+
+
+        
         System.out.println("finished");
         };
 
