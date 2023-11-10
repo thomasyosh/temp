@@ -9,11 +9,16 @@ class Main{
         System.out.print("Input simulation time (mins):");
         int minutes = Integer.parseInt(sc.nextLine());
         Queue<String> q = new LinkedList<String>();
+        
+        for(int i=0;i<4;i++){
         printMsg();
         int choice = Integer.parseInt(sc.nextLine());
         
         if (choice !=0)
             q.add(action[choice-1]);
+
+        }
+
 
         q.poll();
         while(!q.isEmpty()){
