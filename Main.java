@@ -13,8 +13,11 @@ class Main{
         
             while(serviceCode!=0){
                 System.out.print("Action [1-New Mem, 2-Gift, 3-Check Bal, 4-Trans Bal]");
-                if (!auto)
+                if (!auto){
                     serviceCode = sc.nextInt();
+                    if (serviceCode>4 || serviceCode<0)
+                        throw new ArrayIndexOutOfBoundsException();
+                }
                     
                 else{
                     serviceCode = r.getSeed();
@@ -22,8 +25,7 @@ class Main{
                 }
                 
                 
-            if (serviceCode>4 || serviceCode<0)
-                throw new ArrayIndexOutOfBoundsException();
+
             
             
             switch (serviceCode){
@@ -89,9 +91,6 @@ class Main{
             }
             
 
-            
-
-
             System.out.print("After "+i+" min(s)");
             //System.out.println(q+"\n");
             System.out.println(x);
@@ -103,6 +102,3 @@ class Main{
     
 
 }
-
-
-

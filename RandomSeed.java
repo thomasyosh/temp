@@ -1,3 +1,6 @@
+import java.util.Random;
+
+
 class RandomSeed {
     Random rnd = new Random();
     long seed;
