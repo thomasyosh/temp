@@ -78,8 +78,6 @@ class Main{
             minutes = 10;
             System.out.print("Input seed number: ");
             int seed = sc.nextInt();
-            if (seed == 0)
-                System.out.print("Input seed number");
             r = new RandomSeed(seed);
         }
         
