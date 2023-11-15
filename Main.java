@@ -22,7 +22,7 @@ class Main {
                         throw new ArrayIndexOutOfBoundsException();
                     }
                 } catch (InputMismatchException e) {
-                    System.out.println(e.getMessage() + " is not a valid input, please input numbers only");
+                    System.out.println("Not a valid input, please input numbers only");
                     sc.next();
 
                 } catch (ArrayIndexOutOfBoundsException e) {
@@ -99,7 +99,7 @@ class Main {
                     actionComplete++;
                 }
             }
-            System.out.print("After " + i + " min(s)");
+            System.out.print("After " + i + " min(s) ");
             // System.out.println(q+"\n");
             System.out.println(reportMessage);
             if (!q.isEmpty())
