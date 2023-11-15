@@ -101,7 +101,8 @@ class Main{
             System.out.print("After "+i+" min(s)");
             //System.out.println(q+"\n");
             System.out.println(x);
-            q.dequeue();
+            if (!q.isEmpty())
+                q.dequeue();
             System.out.println("------------------------------------------------------");
         }
  
