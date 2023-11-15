@@ -24,7 +24,8 @@ class Main{
                         }
                     }catch(InputMismatchException e){
                         System.out.println("Not a valid input, please input numbers only");
-                        serviceCode = sc.nextInt();
+                        sc.next();
+
                     }catch(ArrayIndexOutOfBoundsException e){
                         System.out.println("Please input a number ranged from 0 and 4");
                     }
