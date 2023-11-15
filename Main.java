@@ -2,48 +2,55 @@ import java.util.*;
 
 class Main{
     static Queue<Integer> q = new LinkedList<Integer>();
-    static String currentTaskName = "";
     static Scanner sc = new Scanner(System.in);
     static String x = "[";
     static RandomSeed r;
     static boolean auto = false;
 
-    static void promptMsg(){
+    static void promptMsg() throws InputMismatchException{
         int serviceCode = -1;
         
-            while(serviceCode!=0){
+           
+        while(serviceCode!=0){
                 System.out.print("Action [1-New Mem, 2-Gift, 3-Check Bal, 4-Trans Bal]");
-                if (!auto){
-                    serviceCode = sc.nextInt();
-                    if (serviceCode>4 || serviceCode<0)
-                        throw new ArrayIndexOutOfBoundsException();
+                if (!auto){                       
+                    try{
+                      serviceCode = sc.nextInt();
+                       
+                        if (!Integer.toString(serviceCode).matches("[0-4]")){
+                            throw new ArrayIndexOutOfBoundsException();
+                        }
+                    }catch(InputMismatchException e){
+                        System.out.println("Not a valid input, please input numbers only");
+                        serviceCode = sc.nextInt();
+                    }catch(ArrayIndexOutOfBoundsException e){
+                        System.out.println("Please input numbers below 5");
+                    }
+
+                   
                 }
                     
                 else{
                     serviceCode = r.getSeed();
                     System.out.println (serviceCode);
-                }
-                
-                
-
-            
+                }          
             
             switch (serviceCode){
                 case 1:
                     for (int i=3;i>=0;i--){
                         q.add(i);
                     }
-                    x += "(4 new member) ";
+                    x += "(4 new member)";
                 break;
                 case 2:
                 for(int i=1;i>=0;i--){
                     q.add(i);
                 }
-                    x += "(2 gift) ";
+                    x += "(2 gift)";
                 break;
                 case 3:
                     q.add(0);
-                    x += "(1 check bal) ";                
+                    x += "(1 check bal)";                
                 break;
                 case 4:
                 for(int i=2;i>=0;i--){
@@ -62,7 +69,7 @@ class Main{
         if (minutes == 0){
             auto = true;
             minutes = 10;
-            System.out.print("Input seed number");
+            System.out.print("Input seed number: ");
             int seed = sc.nextInt();
             if (seed == 0)
                 System.out.print("Input seed number");
