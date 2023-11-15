@@ -6,6 +6,8 @@ class Main{
     static String x = "[";
     static RandomSeed r;
     static boolean auto = false;
+    static int actionComplete = 0;
+    static int totalActionCount = 0;
 
     static void promptMsg() throws InputMismatchException{
         int serviceCode = -1;
@@ -24,7 +26,7 @@ class Main{
                         System.out.println("Not a valid input, please input numbers only");
                         serviceCode = sc.nextInt();
                     }catch(ArrayIndexOutOfBoundsException e){
-                        System.out.println("Please input numbers below 5");
+                        System.out.println("Please input a number ranged from 0 and 4");
                     }
 
                    
@@ -41,22 +43,26 @@ class Main{
                         q.enqueue(i);
                     }
                     x += "(4 new member)";
+                    totalActionCount++;
                 break;
                 case 2:
                 for(int i=1;i>=0;i--){
                     q.enqueue(i);
                 }
                     x += "(2 gift)";
+                    totalActionCount++;
                 break;
                 case 3:
                     q.enqueue(0);
-                    x += "(1 check bal)";                
+                    x += "(1 check bal)";
+                    totalActionCount++;                
                 break;
                 case 4:
                 for(int i=2;i>=0;i--){
                     q.enqueue(i);
                 }
                 x += "(3 trans bal)";
+                totalActionCount++;
                 break;
                 case 0:
                     x += "]";
@@ -93,6 +99,7 @@ class Main{
                 
             else if((int)q.front()==0){
                 x =x.replaceFirst("\\(.*?\\)","");
+                actionComplete++;
             }
                 
             }
@@ -103,8 +110,13 @@ class Main{
             System.out.println(x);
             if (!q.isEmpty())
                 q.dequeue();
-            System.out.println("------------------------------------------------------");
+            System.out.println("------------------------------------------------------");           
         }
+        System.out.println("----------------- END OF SIMULATION ------------------");
+            System.out.println("Total mins simulated: " + minutes + " minutes");
+            System.out.println("Number of members served: "+actionComplete);
+            System.out.println("Action queued during the simulation: "+totalActionCount);
+            System.out.println("Outstanding item at the end of simulation: "+ (totalActionCount-actionComplete));
  
     }
     
