@@ -1,7 +1,7 @@
 import java.util.*;
 
 class Main{
-    static Queue<Integer> q = new LinkedList<Integer>();
+    static Queue q = new LinkedQueue();
     static Scanner sc = new Scanner(System.in);
     static String x = "[";
     static RandomSeed r;
@@ -38,23 +38,23 @@ class Main{
             switch (serviceCode){
                 case 1:
                     for (int i=3;i>=0;i--){
-                        q.add(i);
+                        q.enqueue(i);
                     }
                     x += "(4 new member)";
                 break;
                 case 2:
                 for(int i=1;i>=0;i--){
-                    q.add(i);
+                    q.enqueue(i);
                 }
                     x += "(2 gift)";
                 break;
                 case 3:
-                    q.add(0);
+                    q.enqueue(0);
                     x += "(1 check bal)";                
                 break;
                 case 4:
                 for(int i=2;i>=0;i--){
-                    q.add(i);
+                    q.enqueue(i);
                 }
                 x += "(3 trans bal)";
                 break;
@@ -86,12 +86,12 @@ class Main{
            
  
             if (!q.isEmpty()){
-                if (q.element()!=0){
+                if ((int) q.front()!=0){
                     int res = new Scanner(x).useDelimiter("\\D+").nextInt();
                     x = x.replaceFirst(String.valueOf(res),String.valueOf(res-1));
                 }
                 
-            else if(q.element()==0){
+            else if((int)q.front()==0){
                 x =x.replaceFirst("\\(.*?\\)","");
             }
                 
@@ -101,7 +101,7 @@ class Main{
             System.out.print("After "+i+" min(s)");
             //System.out.println(q+"\n");
             System.out.println(x);
-            q.poll();
+            q.dequeue();
             System.out.println("------------------------------------------------------");
         }
  

@@ -1,0 +1,3 @@
+
+class QueueEmptyException extends RuntimeException {
+}
